@@ -21,14 +21,26 @@ class ohmyfish(
   if $::osfamily == 'Darwin' {
     include boxen::config
 
+    file { "${boxen::config::envdir}/ohmyfish.sh":
+      ensure => absent,
+    }
+
     file { "${boxen::config::envdir}/ohmyfish.fish":
       ensure => absent,
     }
 
-    boxen::env_script { 'ohmyfish':
-      extension => 'fish',
-      priority  => 'higher',
-      source    => 'puppet:///modules/ohmyfish/ohmyfish.fish',
+    boxen::env_script { 'ohmyfish.sh':
+      scriptname => 'ohmyfish',
+      extension  => 'sh',
+      priority   => 'higher',
+      source     => 'puppet:///modules/ohmyfish/ohmyfish.sh',
+    }
+
+    boxen::env_script { 'ohmyfish.fish':
+      scriptname => 'ohmyfish',
+      extension  => 'fish',
+      priority   => 'higher',
+      source     => 'puppet:///modules/ohmyfish/ohmyfish.fish',
     }
   }
 }

@@ -12,8 +12,10 @@ describe "ohmyfish", :type => :class do
       :user   => "testuser"
     })
 
+    should contain_file("/test/boxen/env.d/ohmyfish.sh").with_ensure("absent")
+    should contain_boxen__env_script("ohmyfish.sh").with_source("puppet:///modules/ohmyfish/ohmyfish.sh")
     should contain_file("/test/boxen/env.d/ohmyfish.fish").with_ensure("absent")
-    should contain_boxen__env_script("ohmyfish").with_source("puppet:///modules/ohmyfish/ohmyfish.fish")
+    should contain_boxen__env_script("ohmyfish.fish").with_source("puppet:///modules/ohmyfish/ohmyfish.fish")
   end
 
   context "Linux" do
