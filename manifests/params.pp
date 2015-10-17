@@ -15,6 +15,6 @@ class ohmyfish::params {
     }
   }
 
-  $ohmyfish_repo = 'bpinto/oh-my-fish'
+  $ohmyfish_repo = 'oh-my-fish/oh-my-fish'
   $ohmyfish_version = 'master'
 }
